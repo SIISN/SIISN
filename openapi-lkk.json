@@ -1,0 +1,5709 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8085/api",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Аутентификация пользователей",
+      "description": "Контроллер для проверки безопасности"
+    },
+    {
+      "name": "Интернационализация",
+      "description": "Изменение языка"
+    },
+    {
+      "name": "Контроллер пользователя",
+      "description": "Контроллер для работы с пользователем"
+    },
+    {
+      "name": "Управление глобальными параметрами системы",
+      "description": "Передача основных параметров на frontend"
+    },
+    {
+      "name": "Контроллер для работы с пользователем ЛКК",
+      "description": "Служит для работы с пользователем ЛКК"
+    },
+    {
+      "name": "Управление логотипом",
+      "description": "Позволяет отображать логотип сайта"
+    },
+    {
+      "name": "Контроллер управления документами клиента?",
+      "description": "Управление формами документов?"
+    },
+    {
+      "name": "Контроллер вознаграждений в системе?",
+      "description": "Служит для формирования вознаграждений для дебиторов?"
+    },
+    {
+      "name": "Контроллер для взаимодествия с регистром клиентов",
+      "description": "Служит для взаимодействия с заявками клиентов"
+    },
+    {
+      "name": "Контроллер для отчётности по деятельности дебиторов?",
+      "description": "Служит для формирования отчётности по деятеьности дебиторов?"
+    },
+    {
+      "name": "Информация о дебиторах клиента?",
+      "description": "Получение информации о дебиторах клиента?"
+    },
+    {
+      "name": "Управление сессией пользователей",
+      "description": "Контроллер для работы с сессией"
+    },
+    {
+      "name": "Список дебиторов?",
+      "description": "Список всех действующих дебиторов?"
+    },
+    {
+      "name": "Управление базовой информацией файлов?",
+      "description": "Позволяет работать с базовой информацией о файлах (структуры, названия)?"
+    },
+    {
+      "name": "Контроллер для взаимодествия с регистром дебиторов",
+      "description": "Служит для взаимодействия с заявками дебиторов"
+    },
+    {
+      "name": "Управление содержимым файлов",
+      "description": "Позволяет работать с содержимым файлов (Сохранение, редактирование и т.д.)"
+    },
+    {
+      "name": "Контроллер формирования отчётов по деятельности клиента?",
+      "description": "Контроллер формирования отчётов по деятельности клиента?"
+    },
+    {
+      "name": "Контроллер событий?",
+      "description": "Контроллер событий?"
+    }
+  ],
+  "paths": {
+    "/user": {
+      "get": {
+        "tags": [
+          "Контроллер пользователя"
+        ],
+        "summary": "Информация о пользователе",
+        "description": "Предоставляет информацию о текущем авторизованном пользователе в системе",
+        "operationId": "getUser",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Контроллер пользователя"
+        ],
+        "summary": "Обновление информации о пользователе",
+        "description": "Служит для обновления информации о текущем пользователе",
+        "operationId": "updateLkkUser",
+        "parameters": [
+          {
+            "name": "fullName",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "shortName",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fio",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "freeLimit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "contractorId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "DIRECT_REGRESS",
+                "DIRECT_NOT_REGRESS",
+                "AGENT",
+                "UNKNOWN"
+              ]
+            }
+          },
+          {
+            "name": "isRegress",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "magicCurrentDate",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "notificationEmail",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "notificationDate",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "isOfferAccepted",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "isOfferRequired",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "isFormAccepted",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "isFormRequired",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "clientId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "LKK",
+                "LKD"
+              ]
+            }
+          },
+          {
+            "name": "agent",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "financing",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/updateschema": {
+      "post": {
+        "tags": [
+          "Управление глобальными параметрами системы"
+        ],
+        "summary": "?",
+        "description": "?",
+        "operationId": "updateDesignScheme",
+        "parameters": [
+          {
+            "name": "typeschema",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/suggest/org": {
+      "post": {
+        "tags": [
+          "dadata-suggest-controller"
+        ],
+        "operationId": "suggestOrg",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Query"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrgSuggestions"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/suggest/name": {
+      "post": {
+        "tags": [
+          "dadata-suggest-controller"
+        ],
+        "operationId": "suggestName",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Query"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/NameSuggestions"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/suggest/country": {
+      "post": {
+        "tags": [
+          "dadata-suggest-controller"
+        ],
+        "operationId": "suggestCountry",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Query"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountrySuggestions"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/suggest/address": {
+      "post": {
+        "tags": [
+          "dadata-suggest-controller"
+        ],
+        "operationId": "suggestAddress",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Query"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressSuggestions"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/session/basic/login": {
+      "post": {
+        "tags": [
+          "Управление сессией пользователей"
+        ],
+        "summary": "Login пользователя",
+        "description": "Позволяет войти в учётную запись",
+        "operationId": "sessionBasicLoginPost",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/log": {
+      "post": {
+        "tags": [
+          "Управление глобальными параметрами системы"
+        ],
+        "summary": "?",
+        "description": "?",
+        "operationId": "businessLog",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "value",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/log/error": {
+      "post": {
+        "tags": [
+          "Управление глобальными параметрами системы"
+        ],
+        "summary": "Информация об ошибках",
+        "description": "Отображает информацию о возникающих ошибках",
+        "operationId": "errorLog",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkk/user/username": {
+      "post": {
+        "tags": [
+          "Контроллер для работы с пользователем ЛКК"
+        ],
+        "summary": "Обновление имени пользователя",
+        "description": "Обновление имени пользователя в системе",
+        "operationId": "updateUsername",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkk/user/password": {
+      "post": {
+        "tags": [
+          "Контроллер для работы с пользователем ЛКК"
+        ],
+        "summary": "Изменение пароля пользователя",
+        "description": "Изменение пароля пользователя в системе",
+        "operationId": "updatePassword",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkk/user/notification_email": {
+      "post": {
+        "tags": [
+          "Контроллер для работы с пользователем ЛКК"
+        ],
+        "summary": "Изменение E-mail клиента",
+        "description": "Изменение E-mail клиента в системе",
+        "operationId": "updateClientNotificationEmail",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkk/user/notification_date": {
+      "post": {
+        "tags": [
+          "Контроллер для работы с пользователем ЛКК"
+        ],
+        "summary": "Изменение даты уведомлений?",
+        "description": "Изменение даты уведомлений в системе?",
+        "operationId": "updateClientNotificationDate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkk/report/{type}": {
+      "post": {
+        "tags": [
+          "Контроллер формирования отчётов по деятельности клиента?"
+        ],
+        "summary": "Выгрузка отчётов?",
+        "description": "Служит для выгрузки отчётов?",
+        "operationId": "report",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/report/{type}/excel": {
+      "post": {
+        "tags": [
+          "Контроллер формирования отчётов по деятельности клиента?"
+        ],
+        "summary": "Выгрузке экселевских отчётов?",
+        "description": "Служить для выгрузки отчётов из экселя?",
+        "operationId": "reportExcel",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/registries/{id}/generate": {
+      "post": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром клиентов"
+        ],
+        "summary": "Создание регистра клиента",
+        "description": "Служит для создание реестра клиента",
+        "operationId": "registryGenerate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestGenerateRegistry"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/registries/{id}/documents": {
+      "post": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром клиентов"
+        ],
+        "summary": "Создание заявки клиента",
+        "description": "Служит для добавления заявки клиента в реестр",
+        "operationId": "addDocumentToRegistry",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DocumentRegistryRequest"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkk/registries/{id}/action": {
+      "post": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром клиентов"
+        ],
+        "summary": "Действия по заявке",
+        "description": "Отображает действия по заявке",
+        "operationId": "action",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FinRegistryAction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkk/registries/save-signed-registry": {
+      "post": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром клиентов"
+        ],
+        "summary": "Сохранение подписанного предложения?",
+        "description": "Сохранение подписанного клиентом предложения?",
+        "operationId": "saveSignedOffer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignedRegistryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkk/registries/create": {
+      "post": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром клиентов"
+        ],
+        "summary": "Создание заявки клиентом",
+        "description": "выводит ID заявки клиента",
+        "operationId": "create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistryCreateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/registries/": {
+      "post": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром клиентов"
+        ],
+        "summary": "Список поставок текущему пользователю?",
+        "description": "Возврещает список поставок текущему пользователю?",
+        "operationId": "getList",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FinRegistryFilter"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegistryItemResp"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/events": {
+      "get": {
+        "tags": [
+          "Контроллер событий?"
+        ],
+        "summary": "Вывод всего списка событий?",
+        "description": "Вызов списка всех событий из базы данных?",
+        "operationId": "events",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Контроллер событий?"
+        ],
+        "summary": "Вывод событий по категориям и id клиента?",
+        "description": "Вывод событий по категориям и id клиента?",
+        "operationId": "eventsFilter",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventFilter"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/event/{id}/requirements": {
+      "post": {
+        "tags": [
+          "Контроллер событий?"
+        ],
+        "summary": "Вывод требований?",
+        "description": "Вывод требований клиента?",
+        "operationId": "requirements",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/RequirementRequest"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkk/document/save-signed-offer": {
+      "post": {
+        "tags": [
+          "Контроллер управления документами клиента?"
+        ],
+        "summary": "Сохранение подписанного предложения?",
+        "description": "Загрузка подписанного клиентом предложения?",
+        "operationId": "saveSignedOffer_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignedOfferRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkk/document/save-signed-form": {
+      "post": {
+        "tags": [
+          "Контроллер управления документами клиента?"
+        ],
+        "summary": "Проверка загруженного документа?",
+        "description": "Проверка загруженного документа перед отправкой в базу?",
+        "operationId": "documentSignAction",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormDocumentSignAction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkk/document/offer": {
+      "post": {
+        "tags": [
+          "Контроллер управления документами клиента?"
+        ],
+        "summary": "Формирование предложения?",
+        "description": "Формирование предложения для клиента?",
+        "operationId": "generateOffer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OfferRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OfferItem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/document/generate-form-document": {
+      "post": {
+        "tags": [
+          "Контроллер управления документами клиента?"
+        ],
+        "summary": "Вывод структурной части документа для клиента?",
+        "description": "Вывод структурной части последней версии документа для клиента?",
+        "operationId": "generateOffer_1",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormDocumentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/OfferItem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/document/doc-structure/previous": {
+      "post": {
+        "tags": [
+          "Контроллер управления документами клиента?"
+        ],
+        "summary": "Вывод структурной части документа для клиента?",
+        "description": "Вывод структурной части последней версии документа для клиента?",
+        "operationId": "getDocumentStructurePrevious",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentStructurePreviousRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkd/reward-debtor/rewards/{id}/action": {
+      "post": {
+        "tags": [
+          "Контроллер вознаграждений в системе?"
+        ],
+        "summary": "Выводит действий за которые было начислено вознаграждение?",
+        "description": "Служит для вывода действий за которые было начислено вознаграждение?",
+        "operationId": "action_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RewardDebtorAction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkd/reward-debtor/rewards/all": {
+      "post": {
+        "tags": [
+          "Контроллер вознаграждений в системе?"
+        ],
+        "summary": "Выводит все вознаграждения дебитора",
+        "description": "Служит для вывода всех вознаграждений дебитора?",
+        "operationId": "getRewardsByFilter",
+        "parameters": [
+          {
+            "name": "debtorId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "statusFactor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "statusDebtor",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "department",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pagination",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "sortDesc",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "boolean"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RewardDebtorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkd/report/{type}": {
+      "post": {
+        "tags": [
+          "Контроллер для отчётности по деятельности дебиторов?"
+        ],
+        "summary": "Выгрузка отчётов?",
+        "description": "Служит для выгрузки отчётов?",
+        "operationId": "report_1",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkd/report/{type}/excel": {
+      "post": {
+        "tags": [
+          "Контроллер для отчётности по деятельности дебиторов?"
+        ],
+        "summary": "Выгрузке экселевских отчётов?",
+        "description": "Служить для выгрузки отчётов из экселя?",
+        "operationId": "reportExcel_1",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkd/registries/{id}/notification-sign-action": {
+      "post": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром дебиторов"
+        ],
+        "summary": "Действие по подписанию документа УКЭП?",
+        "description": "Служит для проверки электронной подписи документа в заявке?",
+        "operationId": "documentSignAction_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentSignAction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkd/registries/{id}/documents": {
+      "post": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром дебиторов"
+        ],
+        "summary": "Создание заявки дебитора",
+        "description": "Служит для добавления заявки дебитора в реестр",
+        "operationId": "addDocumentToRegistry_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DocumentRegistryRequest"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkd/registries/{id}/detail/set-debtor-status": {
+      "post": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром дебиторов"
+        ],
+        "summary": "Статус подтверждения поставки дебитором",
+        "description": "Выводит статус подтверждения поставки дебитором",
+        "operationId": "setDebtorStatus",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupplyDebtorStatusRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkd/registries/{id}/detail/change-prime": {
+      "post": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром дебиторов"
+        ],
+        "summary": "Изменение флага заявки",
+        "description": "Служит для изменения флага заявки",
+        "operationId": "changePrime",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangePrimeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkd/registries/{id}/action": {
+      "post": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром дебиторов"
+        ],
+        "summary": "Совершение действия по заявке",
+        "description": "Отображает действия по заявке",
+        "operationId": "action_2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FinRegistryAction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkd/registries/create": {
+      "post": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром дебиторов"
+        ],
+        "summary": "Создание заявки дебитором",
+        "description": "Служит для создания заявки дебитором",
+        "operationId": "create_1",
+        "parameters": [
+          {
+            "name": "number",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "contractFactNum",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "contractSupplyNum",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkd/registries/": {
+      "post": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром дебиторов"
+        ],
+        "summary": "Список поставок текущему пользователю?",
+        "description": "Возврещает список поставок текущему пользователю?",
+        "operationId": "getList_1",
+        "parameters": [
+          {
+            "name": "clientId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "debtorId",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dateFrom",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "dateTo",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "department",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "source",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pagination",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "sortDesc",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "boolean"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegistryItemResp"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/doc-type-info": {
+      "post": {
+        "tags": [
+          "Управление базовой информацией файлов?"
+        ],
+        "summary": "Получение информации о документе?",
+        "description": "Позволяет получить информацию о документе?",
+        "operationId": "getDocumentStructurePrevious_1",
+        "parameters": [
+          {
+            "name": "documentName",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/FactDocumentType"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/binary": {
+      "post": {
+        "tags": [
+          "Управление содержимым файлов"
+        ],
+        "summary": "Содание содержимого файла",
+        "description": "Позволяет создать содержимое файла",
+        "operationId": "createBinary",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "upfile": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/BinaryInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/version": {
+      "get": {
+        "tags": [
+          "Управление глобальными параметрами системы"
+        ],
+        "summary": "Отображение версии приложения",
+        "description": "Передаёт на версию приложения на frontend",
+        "operationId": "getVersionApplication",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/VersionDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/system/page": {
+      "get": {
+        "tags": [
+          "Управление глобальными параметрами системы"
+        ],
+        "summary": "Получение основных системных параметров",
+        "description": "Передача основных системных параметров на frontend",
+        "operationId": "getPage",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/session/logout": {
+      "get": {
+        "tags": [
+          "Управление сессией пользователей"
+        ],
+        "summary": "Logout пользователя",
+        "description": "Позволяет разлогиниться",
+        "operationId": "logout",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/securitytest/public": {
+      "get": {
+        "tags": [
+          "Аутентификация пользователей"
+        ],
+        "summary": "Идентификатор ответа",
+        "description": "Возвращает ответ",
+        "operationId": "isPublic",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/securitytest/client": {
+      "get": {
+        "tags": [
+          "Аутентификация пользователей"
+        ],
+        "summary": "Авторизация?",
+        "description": "Позволяет зарегистрировать пользователя?",
+        "operationId": "isBorrower",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/securitytest/anonymous": {
+      "get": {
+        "tags": [
+          "Аутентификация пользователей"
+        ],
+        "summary": "Анонимный идентификатор ответа",
+        "description": "Позволяет ?",
+        "operationId": "isAnonymous",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/user/magic-current-date/{date}": {
+      "get": {
+        "tags": [
+          "Контроллер для работы с пользователем ЛКК"
+        ],
+        "summary": "Установление даты выплаты для клиента?",
+        "description": "Устанавливает дату выплаты для клиента?",
+        "operationId": "setMagicCurrentDate",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkk/user/limits": {
+      "get": {
+        "tags": [
+          "Контроллер для работы с пользователем ЛКК"
+        ],
+        "summary": "Возвращает лимит финансирования для клиента от банка",
+        "description": "Служит для отображения лимита финансирования выделенного банком клиенту",
+        "operationId": "getUserLimits",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserLimitItem"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/registries/{id}/detail": {
+      "get": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром клиентов"
+        ],
+        "summary": "Получение информации по заяке",
+        "description": "Служит для получение информации по заяке",
+        "operationId": "getDetail",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/FinRegistryDetail"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/events/status": {
+      "get": {
+        "tags": [
+          "Контроллер событий?"
+        ],
+        "summary": "Статус события?",
+        "description": "Вывод статуса события?",
+        "operationId": "eventsStatus",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventStatus"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/events/critical": {
+      "get": {
+        "tags": [
+          "Контроллер событий?"
+        ],
+        "summary": "Вывод критических событий?",
+        "description": "Вывод списка приоритетных событий?",
+        "operationId": "eventsCritical",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/events/calendar/{date}": {
+      "get": {
+        "tags": [
+          "Контроллер событий?"
+        ],
+        "summary": "Календарь событий?",
+        "description": "Вывод календаря событий?",
+        "operationId": "eventsCalendar",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/FactEventDay"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/dict/debtors": {
+      "get": {
+        "tags": [
+          "Информация о дебиторах клиента?"
+        ],
+        "summary": "Возвращает общую информацию о дебиторах, лимитах",
+        "description": "Возвращает информацию о всех дебиторах клиента",
+        "operationId": "debtors",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DebtorItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/dict/client-models": {
+      "get": {
+        "tags": [
+          "Информация о дебиторах клиента?"
+        ],
+        "summary": "Вызов запросов к базе данных?",
+        "description": "Вызов информации по клиенту из базы данных?",
+        "operationId": "clientModels",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClientModelEntity"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkd/reward-debtor/rewards/{id}": {
+      "get": {
+        "tags": [
+          "Контроллер вознаграждений в системе?"
+        ],
+        "summary": "Выводит все вознаграждения по id дебитора?",
+        "description": "Служит для вывода всех вознаграждений по id дебитора?",
+        "operationId": "getRewardById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RewardDebtor"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkd/reward-debtor/rewards/{id}/detail": {
+      "get": {
+        "tags": [
+          "Контроллер вознаграждений в системе?"
+        ],
+        "summary": "Выводит детали начисления вознаграждения?",
+        "description": "Служит для вывода деталей начисления вознаграждения?",
+        "operationId": "getRewardDetail",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/RewardDebtorDetail"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkd/registries/{id}/detail": {
+      "get": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром дебиторов"
+        ],
+        "summary": "Получение информации по заяке",
+        "description": "Служит для получение информации по заяке",
+        "operationId": "getDetail_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/FinRegistryDetail"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkd/dict/notifications": {
+      "get": {
+        "tags": [
+          "Список дебиторов?"
+        ],
+        "summary": "Получение уведомлений дебиторами?",
+        "description": "Отправка уведомлений дебиторам?",
+        "operationId": "getNotifications",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FinRegistryDebtorNotification"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkd/dict/contract-supplies": {
+      "get": {
+        "tags": [
+          "Список дебиторов?"
+        ],
+        "summary": "Список контрактов текущего пользователя",
+        "description": "Возврещает список контрактов текущего пользователя",
+        "operationId": "getContractSupplies",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ContractSupply"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/image/{id}": {
+      "get": {
+        "tags": [
+          "Управление логотипом"
+        ],
+        "summary": "Получение изображения",
+        "description": "Позволяет получить отображаемое изображение",
+        "operationId": "getImage",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "image/_*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/i18n": {
+      "get": {
+        "tags": [
+          "Интернационализация"
+        ],
+        "summary": "?",
+        "description": "?",
+        "operationId": "i18nStrings",
+        "parameters": [
+          {
+            "name": "preparehtml",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/I18NStrings"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/binary/{id}": {
+      "get": {
+        "tags": [
+          "Управление содержимым файлов"
+        ],
+        "summary": "Выгрузка файлов",
+        "description": "Позволяет выгрузить файл",
+        "operationId": "download",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lkk/registries/{id}/documents/{documentId}": {
+      "delete": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром клиентов"
+        ],
+        "summary": "Удаление заявки клиента",
+        "description": "Служит для удаления заявки клиента из реестра",
+        "operationId": "removeDocumentFromRegistry",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "documentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/lkd/registries/{id}/documents/{documentId}": {
+      "delete": {
+        "tags": [
+          "Контроллер для взаимодествия с регистром дебиторов"
+        ],
+        "summary": "Удаление заявки дебитора",
+        "description": "Служит для удаления заявки дебитора из реестра",
+        "operationId": "removeDocumentFromRegistry_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "documentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Query": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string"
+          }
+        }
+      },
+      "AddressSuggestion": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "postal_code": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "region_fias_id": {
+            "type": "string"
+          },
+          "region_kladr_id": {
+            "type": "string"
+          },
+          "region_with_type": {
+            "type": "string"
+          },
+          "region_type": {
+            "type": "string"
+          },
+          "region_type_full": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "area_fias_id": {
+            "type": "string"
+          },
+          "area_kladr_id": {
+            "type": "string"
+          },
+          "area_with_type": {
+            "type": "string"
+          },
+          "area_type": {
+            "type": "string"
+          },
+          "area_type_full": {
+            "type": "string"
+          },
+          "area": {
+            "type": "string"
+          },
+          "city_fias_id": {
+            "type": "string"
+          },
+          "city_kladr_id": {
+            "type": "string"
+          },
+          "city_with_type": {
+            "type": "string"
+          },
+          "city_type": {
+            "type": "string"
+          },
+          "city_type_full": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "city_area": {
+            "type": "string"
+          },
+          "city_district_fias_id": {
+            "type": "string"
+          },
+          "city_district_kladr_id": {
+            "type": "string"
+          },
+          "city_district_with_type": {
+            "type": "string"
+          },
+          "city_district_type": {
+            "type": "string"
+          },
+          "city_district_type_full": {
+            "type": "string"
+          },
+          "city_district": {
+            "type": "string"
+          },
+          "settlement_fias_id": {
+            "type": "string"
+          },
+          "settlement_kladr_id": {
+            "type": "string"
+          },
+          "settlement_with_type": {
+            "type": "string"
+          },
+          "settlement_type": {
+            "type": "string"
+          },
+          "settlement_type_full": {
+            "type": "string"
+          },
+          "settlement": {
+            "type": "string"
+          },
+          "street_fias_id": {
+            "type": "string"
+          },
+          "street_kladr_id": {
+            "type": "string"
+          },
+          "street_with_type": {
+            "type": "string"
+          },
+          "street_type": {
+            "type": "string"
+          },
+          "street_type_full": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          },
+          "house_fias_id": {
+            "type": "string"
+          },
+          "house_kladr_id": {
+            "type": "string"
+          },
+          "house_type": {
+            "type": "string"
+          },
+          "house_type_full": {
+            "type": "string"
+          },
+          "house": {
+            "type": "string"
+          },
+          "block_type": {
+            "type": "string"
+          },
+          "block_type_full": {
+            "type": "string"
+          },
+          "block": {
+            "type": "string"
+          },
+          "flat_type": {
+            "type": "string"
+          },
+          "flat_type_full": {
+            "type": "string"
+          },
+          "flat": {
+            "type": "string"
+          },
+          "flat_area": {
+            "type": "string"
+          },
+          "square_meter_price": {
+            "type": "string"
+          },
+          "flat_price": {
+            "type": "string"
+          },
+          "postal_box": {
+            "type": "string"
+          },
+          "fias_id": {
+            "type": "string"
+          },
+          "fias_level": {
+            "type": "string"
+          },
+          "kladr_id": {
+            "type": "string"
+          },
+          "capital_marker": {
+            "type": "string"
+          },
+          "okato": {
+            "type": "string"
+          },
+          "oktmo": {
+            "type": "string"
+          },
+          "tax_office": {
+            "type": "string"
+          },
+          "tax_office_legal": {
+            "type": "string"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "geo_lat": {
+            "type": "string"
+          },
+          "geo_lon": {
+            "type": "string"
+          },
+          "beltway_hit": {
+            "type": "string"
+          },
+          "beltway_distance": {
+            "type": "string"
+          },
+          "metro": {
+            "type": "array",
+            "properties": {
+              "empty": {
+                "type": "boolean"
+              }
+            },
+            "items": {
+              "$ref": "#/components/schemas/MetroStation"
+            }
+          },
+          "qc_geo": {
+            "type": "string"
+          },
+          "qc_complete": {
+            "type": "string"
+          },
+          "qc_house": {
+            "type": "string"
+          },
+          "history_values": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "unparsed_parts": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "qc": {
+            "type": "string"
+          }
+        }
+      },
+      "Authorities": {
+        "type": "object",
+        "properties": {
+          "region_with_type": {
+            "$ref": "#/components/schemas/RegTypeAuthorities"
+          },
+          "fts_report": {
+            "$ref": "#/components/schemas/RegTypeAuthorities"
+          },
+          "pf": {
+            "$ref": "#/components/schemas/RegTypeAuthorities"
+          },
+          "sif": {
+            "$ref": "#/components/schemas/RegTypeAuthorities"
+          }
+        }
+      },
+      "Capital": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "DataEmail": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string"
+          },
+          "local": {
+            "type": "string"
+          },
+          "qc": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "Documents": {
+        "type": "object",
+        "properties": {
+          "fts_registration": {
+            "$ref": "#/components/schemas/RegTypeDocs"
+          },
+          "fts_report": {
+            "$ref": "#/components/schemas/RegTypeDocs"
+          },
+          "pf_registration": {
+            "$ref": "#/components/schemas/RegTypeDocs"
+          },
+          "sifRegistration": {
+            "$ref": "#/components/schemas/RegTypeDocs"
+          },
+          "smb": {
+            "$ref": "#/components/schemas/RegTypeDocs"
+          }
+        }
+      },
+      "Emails": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/DataEmail"
+          },
+          "unrestricted_value": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "Finance": {
+        "type": "object",
+        "properties": {
+          "debt": {
+            "type": "string"
+          },
+          "expense": {
+            "type": "string"
+          },
+          "income": {
+            "type": "string"
+          },
+          "penalty": {
+            "type": "string"
+          },
+          "tax_system": {
+            "type": "string"
+          },
+          "year": {
+            "type": "string"
+          }
+        }
+      },
+      "FounderShare": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      },
+      "Founders": {
+        "type": "object",
+        "properties": {
+          "fio": {
+            "$ref": "#/components/schemas/FoundersFio"
+          },
+          "hid": {
+            "type": "string"
+          },
+          "inn": {
+            "type": "string"
+          },
+          "share": {
+            "$ref": "#/components/schemas/FounderShare"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "FoundersFio": {
+        "type": "object",
+        "properties": {
+          "gender": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "patronymic": {
+            "type": "string"
+          },
+          "qc": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "surname": {
+            "type": "string"
+          }
+        }
+      },
+      "LegalForm": {
+        "type": "object",
+        "properties": {
+          "short": {
+            "type": "string"
+          },
+          "full": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "Management": {
+        "type": "object",
+        "properties": {
+          "disqualified": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "post": {
+            "type": "string"
+          }
+        }
+      },
+      "Managers": {
+        "type": "object",
+        "properties": {
+          "fio": {
+            "$ref": "#/components/schemas/FoundersFio"
+          },
+          "hid": {
+            "type": "string"
+          },
+          "inn": {
+            "type": "string"
+          },
+          "post": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "MetroStation": {
+        "type": "object",
+        "properties": {
+          "distance": {
+            "type": "number"
+          },
+          "line": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Okveds": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "main": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "OrgAddressBody": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "unrestricted_value": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/AddressSuggestion"
+          }
+        }
+      },
+      "OrgName": {
+        "type": "object",
+        "properties": {
+          "full": {
+            "type": "string"
+          },
+          "full_with_opf": {
+            "type": "string"
+          },
+          "latin": {
+            "type": "string"
+          },
+          "short": {
+            "type": "string"
+          },
+          "short_with_opf": {
+            "type": "string"
+          }
+        }
+      },
+      "OrgSuggestion": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "$ref": "#/components/schemas/OrgAddressBody"
+          },
+          "authorities": {
+            "$ref": "#/components/schemas/Authorities"
+          },
+          "branch_count": {
+            "type": "string"
+          },
+          "branch_type": {
+            "type": "string"
+          },
+          "capital": {
+            "$ref": "#/components/schemas/Capital"
+          },
+          "documents": {
+            "$ref": "#/components/schemas/Documents"
+          },
+          "emails": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Emails"
+            }
+          },
+          "employee_count": {
+            "type": "string"
+          },
+          "finance": {
+            "$ref": "#/components/schemas/Finance"
+          },
+          "founders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Founders"
+            }
+          },
+          "hid": {
+            "type": "string"
+          },
+          "inn": {
+            "type": "string"
+          },
+          "kpp": {
+            "type": "string"
+          },
+          "licenses": {
+            "type": "string"
+          },
+          "management": {
+            "$ref": "#/components/schemas/Management"
+          },
+          "managers": {
+            "$ref": "#/components/schemas/Managers"
+          },
+          "name": {
+            "$ref": "#/components/schemas/OrgName"
+          },
+          "ogrn": {
+            "type": "string"
+          },
+          "ogrn_date": {
+            "type": "string"
+          },
+          "okato": {
+            "type": "string"
+          },
+          "okfs": {
+            "type": "string"
+          },
+          "okogu": {
+            "type": "string"
+          },
+          "okpo": {
+            "type": "string"
+          },
+          "oktmo": {
+            "type": "string"
+          },
+          "okved": {
+            "type": "string"
+          },
+          "okved_type": {
+            "type": "string"
+          },
+          "okveds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Okveds"
+            }
+          },
+          "opf": {
+            "$ref": "#/components/schemas/LegalForm"
+          },
+          "phones": {
+            "type": "string"
+          },
+          "predecessors": {
+            "type": "string"
+          },
+          "qc": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "state": {
+            "$ref": "#/components/schemas/StateOrg"
+          },
+          "successors": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "OrgSuggestionBody": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "unrestricted_value": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/OrgSuggestion"
+          }
+        }
+      },
+      "OrgSuggestions": {
+        "type": "object",
+        "properties": {
+          "suggestions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrgSuggestionBody"
+            }
+          }
+        }
+      },
+      "RegTypeAuthorities": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "RegTypeDocs": {
+        "type": "object",
+        "properties": {
+          "issue_authority": {
+            "type": "string"
+          },
+          "issue_date": {
+            "type": "string"
+          },
+          "number": {
+            "type": "string"
+          },
+          "series": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "StateOrg": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "LIQUIDATING",
+              "LIQUIDATED",
+              "REORGANIZING",
+              "BANKRUPT"
+            ]
+          },
+          "statusDesc": {
+            "type": "string"
+          },
+          "actuality_date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "registration_date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "NameSuggestion": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "surname": {
+            "type": "string"
+          },
+          "patronymic": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          }
+        }
+      },
+      "NameSuggestionBody": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "unrestricted_value": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/NameSuggestion"
+          }
+        }
+      },
+      "NameSuggestions": {
+        "type": "object",
+        "properties": {
+          "suggestions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NameSuggestionBody"
+            }
+          }
+        }
+      },
+      "CountrySuggestion": {
+        "type": "object",
+        "properties": {
+          "alfa2": {
+            "type": "string"
+          },
+          "alfa3": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "name_short": {
+            "type": "string"
+          }
+        }
+      },
+      "CountrySuggestionBody": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "unrestricted_value": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CountrySuggestion"
+          }
+        }
+      },
+      "CountrySuggestions": {
+        "type": "object",
+        "properties": {
+          "suggestions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CountrySuggestionBody"
+            }
+          }
+        }
+      },
+      "AddressSuggestionBody": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "unrestricted_value": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/AddressSuggestion"
+          }
+        }
+      },
+      "AddressSuggestions": {
+        "type": "object",
+        "properties": {
+          "suggestions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AddressSuggestionBody"
+            }
+          }
+        }
+      },
+      "RequestGenerateRegistry": {
+        "type": "object",
+        "properties": {
+          "suppliesIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DocumentRegistryRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "DIADOC",
+              "FILE_SYSTEM",
+              "GENERATED"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "REGISTRY",
+              "UPD",
+              "ARCHIVE",
+              "COMMENT"
+            ]
+          },
+          "creator": {
+            "type": "string",
+            "enum": [
+              "CLIENT",
+              "FACTOR",
+              "SYSTEM",
+              "DEBTOR"
+            ]
+          }
+        }
+      },
+      "BinaryInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "mimetype": {
+            "type": "string"
+          },
+          "createDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "origname": {
+            "type": "string"
+          },
+          "base64Data": {
+            "type": "string"
+          }
+        }
+      },
+      "DiadocSignature": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "parentId": {
+            "type": "string"
+          },
+          "boxId": {
+            "type": "string"
+          },
+          "messageId": {
+            "type": "string"
+          },
+          "fio": {
+            "type": "string"
+          },
+          "position": {
+            "type": "string"
+          },
+          "snils": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "signingTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "signatureVerificationTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "serialNumber": {
+            "type": "string"
+          },
+          "issuer": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "orgName": {
+            "type": "string"
+          },
+          "orgInn": {
+            "type": "string"
+          },
+          "valid": {
+            "type": "boolean"
+          },
+          "certificateStatusValid": {
+            "type": "boolean"
+          }
+        }
+      },
+      "FinRegistryAction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "supplies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FinRegistrySupply"
+            }
+          }
+        }
+      },
+      "FinRegistryDocument": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "document": {
+            "$ref": "#/components/schemas/BinaryInfo"
+          },
+          "externalId": {
+            "type": "string"
+          },
+          "registryId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "children": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "DIADOC",
+              "FILE_SYSTEM",
+              "GENERATED"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "REGISTRY",
+              "UPD",
+              "ARCHIVE",
+              "COMMENT"
+            ]
+          },
+          "signature": {
+            "$ref": "#/components/schemas/DiadocSignature"
+          },
+          "creator": {
+            "type": "string",
+            "enum": [
+              "CLIENT",
+              "FACTOR",
+              "SYSTEM",
+              "DEBTOR"
+            ]
+          }
+        }
+      },
+      "FinRegistrySupply": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "registryId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "debtorInn": {
+            "type": "string"
+          },
+          "debtorName": {
+            "type": "string"
+          },
+          "providerName": {
+            "type": "string"
+          },
+          "providerInn": {
+            "type": "string"
+          },
+          "dbContractNum": {
+            "type": "string"
+          },
+          "numberPosition": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "manual_verif": {
+            "type": "string"
+          },
+          "contractDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "contractMatter": {
+            "type": "string"
+          },
+          "supplyAmount": {
+            "type": "number"
+          },
+          "origDelayDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "docType": {
+            "type": "string"
+          },
+          "docTypePrimary": {
+            "type": "string"
+          },
+          "invoiceCode": {
+            "type": "string"
+          },
+          "supplyDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "shipDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "sfCode": {
+            "type": "string"
+          },
+          "sfDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "active": {
+            "type": "boolean"
+          },
+          "prime": {
+            "type": "boolean"
+          },
+          "comments": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FinRegistrySupplyComment"
+            }
+          },
+          "sourceDocument": {
+            "$ref": "#/components/schemas/FinRegistryDocument"
+          },
+          "updDocument": {
+            "$ref": "#/components/schemas/FinRegistryDocument"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "NOT_ACTUAL_REGISTRY",
+              "REGISTRY",
+              "MANUAL",
+              "UPD",
+              "DEBTOR"
+            ]
+          },
+          "checks": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SupplyCheck"
+            }
+          },
+          "sfProviderCode": {
+            "type": "string"
+          },
+          "verificationDebtor": {
+            "type": "boolean"
+          },
+          "dateExecutedAgent": {
+            "type": "string",
+            "format": "date"
+          },
+          "countDayFin": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "datePayDebtorAgent": {
+            "type": "string",
+            "format": "date"
+          },
+          "purposePaymentAgent": {
+            "type": "string"
+          },
+          "verificationFactor": {
+            "type": "boolean"
+          },
+          "amountExecutedAgent": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "FinRegistrySupplyComment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "supplyId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "document": {
+            "$ref": "#/components/schemas/FinRegistryDocument"
+          },
+          "fio": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "createDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "SupplyCheck": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "supplyId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "registryId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "check": {
+            "type": "string",
+            "enum": [
+              "DEBTOR_CONFIRMATION_API",
+              "DEBTOR_CONFIRMATION_MANUAL",
+              "AVAILABLE_IN_REGISTRY",
+              "EQUAL_IN_REGISTRY",
+              "UPD_SIGNED",
+              "EQUAL_IN_UPD",
+              "AVAILABLE_IN_UPD"
+            ]
+          },
+          "createDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "creator": {
+            "type": "string"
+          },
+          "verifier": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "result": {
+            "type": "string",
+            "enum": [
+              "OK",
+              "NOT",
+              "ERROR",
+              "NOT_FOUND"
+            ]
+          }
+        }
+      },
+      "SignedRegistryRequest": {
+        "required": [
+          "attachedSignature",
+          "clientId",
+          "document",
+          "documentRegistry"
+        ],
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string"
+          },
+          "document": {
+            "$ref": "#/components/schemas/BinaryInfo"
+          },
+          "documentRegistry": {
+            "$ref": "#/components/schemas/BinaryInfo"
+          },
+          "attachedSignature": {
+            "type": "boolean"
+          }
+        }
+      },
+      "RegistryCreateRequest": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string"
+          },
+          "contractFactNum": {
+            "type": "string"
+          },
+          "contractSupplyNum": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          }
+        }
+      },
+      "FinRegistryFilter": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string"
+          },
+          "debtorId": {
+            "type": "string"
+          },
+          "dateFrom": {
+            "type": "string"
+          },
+          "dateTo": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "department": {
+            "type": "string"
+          },
+          "source": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "pagination": {
+            "type": "boolean"
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sortBy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "sortDesc": {
+            "type": "array",
+            "items": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "RegistryItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string"
+          },
+          "number": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number"
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "contractFactNum": {
+            "type": "string"
+          },
+          "productName": {
+            "type": "string"
+          },
+          "contractSupplyNum": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "AGENT"
+            ]
+          }
+        }
+      },
+      "RegistryItemResp": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RegistryItem"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "EventFilter": {
+        "type": "object",
+        "properties": {
+          "categoryEnum": {
+            "type": "string"
+          }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "startStatus": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "categoryEnum": {
+            "type": "string",
+            "enum": [
+              "CONDITIONAL",
+              "MONITORING",
+              "DELAY_REGRESS",
+              "DELAY",
+              "LIMIT_EXPIRATION",
+              "MESSAGE"
+            ]
+          }
+        }
+      },
+      "DocumentStructure": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "body": {
+            "type": "string"
+          }
+        }
+      },
+      "EventItem": {
+        "type": "object",
+        "properties": {
+          "targetDate": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "customMessage": {
+            "type": "string"
+          },
+          "uploadFiles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BinaryInfo"
+            }
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventRequirement"
+            }
+          }
+        }
+      },
+      "EventReqBinaryInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "createDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateVerify": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "whoVerify": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "NOT_CHECK",
+              "VALID",
+              "NOT_VALID"
+            ]
+          },
+          "comment": {
+            "type": "string"
+          },
+          "file": {
+            "$ref": "#/components/schemas/BinaryInfo"
+          }
+        }
+      },
+      "EventRequirement": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "eventId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "documentType": {
+            "$ref": "#/components/schemas/FactDocumentType"
+          },
+          "valid": {
+            "type": "boolean"
+          },
+          "createDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "userReply": {
+            "type": "string"
+          },
+          "files": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventReqBinaryInfo"
+            }
+          }
+        }
+      },
+      "FactDocumentType": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "parent": {
+            "$ref": "#/components/schemas/FactDocumentType"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "maxFileSizeMb": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "allowFileType": {
+            "type": "string"
+          },
+          "attachedSignature": {
+            "type": "boolean"
+          },
+          "formTemplate": {
+            "$ref": "#/components/schemas/BinaryInfo"
+          },
+          "documentStructure": {
+            "$ref": "#/components/schemas/DocumentStructure"
+          },
+          "store": {
+            "$ref": "#/components/schemas/Store"
+          },
+          "updateDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Form": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/BinaryInfo"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "LEGAL_ENTITY",
+              "INDIVIDUAL",
+              "LKK_TEMPLATE",
+              "LKR_BILLING_REPORT",
+              "FIRST_STEP_QUESTIONNAIRE_LE",
+              "FIRST_STEP_QUESTIONNAIRE_INDIVIDUAL"
+            ]
+          }
+        }
+      },
+      "Id": {
+        "type": "object",
+        "properties": {
+          "reqid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "binaryinfoid": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "Status": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "info": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "nameLkk": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "statusMessage": {
+            "$ref": "#/components/schemas/StatusMessage"
+          },
+          "showFinalResult": {
+            "type": "boolean"
+          },
+          "canRequestDocs": {
+            "type": "boolean"
+          },
+          "template": {
+            "$ref": "#/components/schemas/Form"
+          },
+          "objectId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "StatusMessage": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "message": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "selectProductWhenOpening": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Store": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "orderNum": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "RequirementRequest": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BinaryInfo"
+            }
+          }
+        }
+      },
+      "SignedOfferRequest": {
+        "required": [
+          "attachedSignature",
+          "clientId",
+          "document",
+          "documentOffer"
+        ],
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string"
+          },
+          "document": {
+            "$ref": "#/components/schemas/BinaryInfo"
+          },
+          "documentOffer": {
+            "$ref": "#/components/schemas/BinaryInfo"
+          },
+          "attachedSignature": {
+            "type": "boolean"
+          },
+          "form": {
+            "type": "string"
+          }
+        }
+      },
+      "FormDocumentSignAction": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "documentId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "binaryInfoId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "attachedSignature": {
+            "type": "boolean"
+          },
+          "form": {
+            "type": "string"
+          }
+        }
+      },
+      "OfferRequest": {
+        "type": "object",
+        "properties": {
+          "documentName": {
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "OfferItem": {
+        "type": "object",
+        "properties": {
+          "binaryInfo": {
+            "$ref": "#/components/schemas/BinaryInfo"
+          },
+          "attachedSignature": {
+            "type": "boolean"
+          }
+        }
+      },
+      "FormDocumentRequest": {
+        "type": "object",
+        "properties": {
+          "documentName": {
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "form": {
+            "type": "string"
+          }
+        }
+      },
+      "DocumentStructurePreviousRequest": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string"
+          },
+          "documentName": {
+            "type": "string"
+          }
+        }
+      },
+      "RewardDebtorAction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "comment": {
+            "type": "string"
+          }
+        }
+      },
+      "RewardDebtorItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sum": {
+            "type": "number"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "period": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "RewardDebtorResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RewardDebtorItem"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "DocumentSignAction": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "notificationId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "documentId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "signedDocumentId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "attachedSignature": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SupplyDebtorStatusRequest": {
+        "type": "object",
+        "properties": {
+          "supplyId": {
+            "type": "string"
+          },
+          "debtorStatus": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ChangePrimeRequest": {
+        "type": "object",
+        "properties": {
+          "supplyId": {
+            "type": "string"
+          },
+          "prime": {
+            "type": "boolean"
+          }
+        }
+      },
+      "VersionDto": {
+        "type": "object",
+        "properties": {
+          "lkk": {
+            "type": "string"
+          },
+          "lkb": {
+            "type": "string"
+          },
+          "migration": {
+            "type": "string"
+          },
+          "notify": {
+            "type": "string"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "DIRECT_REGRESS",
+              "DIRECT_NOT_REGRESS",
+              "AGENT",
+              "UNKNOWN"
+            ]
+          },
+          "scope": {
+            "type": "string",
+            "enum": [
+              "LKK",
+              "LKD"
+            ]
+          },
+          "agent": {
+            "type": "boolean"
+          },
+          "financing": {
+            "type": "boolean"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "shortName": {
+            "type": "string"
+          },
+          "fio": {
+            "type": "string"
+          },
+          "freeLimit": {
+            "type": "number"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "contractorId": {
+            "type": "string"
+          },
+          "isRegress": {
+            "type": "boolean"
+          },
+          "magicCurrentDate": {
+            "type": "string"
+          },
+          "notificationEmail": {
+            "type": "string"
+          },
+          "notificationDate": {
+            "type": "string"
+          },
+          "isOfferAccepted": {
+            "type": "boolean"
+          },
+          "isOfferRequired": {
+            "type": "boolean"
+          },
+          "isFormAccepted": {
+            "type": "boolean"
+          },
+          "isFormRequired": {
+            "type": "boolean"
+          },
+          "clientId": {
+            "type": "string"
+          }
+        }
+      },
+      "Page": {
+        "type": "object",
+        "properties": {
+          "env": {
+            "type": "object",
+            "properties": {
+              "empty": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": {
+              "type": "object"
+            }
+          },
+          "designSchema": {
+            "type": "string"
+          },
+          "systemColors": {
+            "type": "object",
+            "properties": {
+              "empty": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "LimitItem": {
+        "type": "object",
+        "properties": {
+          "contractFactNum": {
+            "type": "string"
+          },
+          "freeLimit": {
+            "type": "number"
+          }
+        }
+      },
+      "UserLimitItem": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "string"
+          },
+          "sumLimit": {
+            "type": "number"
+          },
+          "limits": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LimitItem"
+            }
+          }
+        }
+      },
+      "Client": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "shortName": {
+            "type": "string"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "inn": {
+            "type": "string"
+          },
+          "kpp": {
+            "type": "string"
+          },
+          "egrn": {
+            "type": "string"
+          },
+          "legalAddress": {
+            "type": "string"
+          },
+          "isOfferAccepted": {
+            "type": "boolean"
+          },
+          "isOfferRequired": {
+            "type": "boolean"
+          },
+          "isFormAccepted": {
+            "type": "boolean"
+          },
+          "isFormRequired": {
+            "type": "boolean"
+          },
+          "offerAcceptDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "externalId": {
+            "type": "string"
+          },
+          "contractPerson": {
+            "$ref": "#/components/schemas/ContractPerson"
+          }
+        }
+      },
+      "ContractFact": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "number": {
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "product": {
+            "$ref": "#/components/schemas/RadarProducts"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "DIRECT_REGRESS",
+              "DIRECT_NOT_REGRESS",
+              "AGENT",
+              "UNKNOWN"
+            ]
+          },
+          "finLimit": {
+            "type": "number"
+          },
+          "agencyFeeRate": {
+            "type": "number",
+            "format": "double"
+          },
+          "client": {
+            "$ref": "#/components/schemas/Client"
+          },
+          "deleted": {
+            "type": "boolean"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "MANUAL",
+              "AUTO"
+            ]
+          },
+          "regress": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ContractPerson": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "fio": {
+            "type": "string"
+          },
+          "position": {
+            "$ref": "#/components/schemas/Position"
+          },
+          "rfio": {
+            "type": "string"
+          },
+          "dfio": {
+            "type": "string"
+          }
+        }
+      },
+      "ContractSupply": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "number": {
+            "type": "string"
+          },
+          "contractFactId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "clientId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "debtorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "finLimit": {
+            "type": "number"
+          },
+          "finLimitUsed": {
+            "type": "number"
+          },
+          "finLimitRest": {
+            "type": "number"
+          },
+          "gracePeriod": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "finPercent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "financing": {
+            "type": "boolean"
+          },
+          "agentapplication": {
+            "type": "boolean"
+          },
+          "contractFact": {
+            "$ref": "#/components/schemas/ContractFact"
+          },
+          "client": {
+            "$ref": "#/components/schemas/Client"
+          },
+          "debtor": {
+            "$ref": "#/components/schemas/Debtor"
+          }
+        }
+      },
+      "Debtor": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "shortName": {
+            "type": "string"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "inn": {
+            "type": "string"
+          },
+          "kpp": {
+            "type": "string"
+          },
+          "egrn": {
+            "type": "string"
+          },
+          "legalAddress": {
+            "type": "string"
+          },
+          "externalId": {
+            "type": "string"
+          }
+        }
+      },
+      "FinRegistry": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "clientStatus": {
+            "type": "string"
+          },
+          "debtorStatus": {
+            "type": "string"
+          },
+          "department": {
+            "type": "string"
+          },
+          "processId": {
+            "type": "string"
+          },
+          "createDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "MAIN",
+              "AGENT"
+            ]
+          },
+          "comment": {
+            "$ref": "#/components/schemas/FinRegistryComment"
+          },
+          "clientId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "contractFactId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "contractSupplyId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "Клиент",
+              "Фактор",
+              "Дебитор"
+            ]
+          },
+          "document": {
+            "$ref": "#/components/schemas/BinaryInfo"
+          },
+          "statusHistories": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FinRegistryStatusHistory"
+            }
+          },
+          "client": {
+            "$ref": "#/components/schemas/Client"
+          },
+          "debtor": {
+            "$ref": "#/components/schemas/Debtor"
+          },
+          "contractFact": {
+            "$ref": "#/components/schemas/ContractFact"
+          },
+          "contractSupply": {
+            "$ref": "#/components/schemas/ContractSupply"
+          }
+        }
+      },
+      "FinRegistryComment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "role": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "fio": {
+            "type": "string"
+          },
+          "updateDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "FinRegistryDetail": {
+        "type": "object",
+        "properties": {
+          "registry": {
+            "$ref": "#/components/schemas/FinRegistry"
+          },
+          "statuses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FinRegistryStatusHistory"
+            }
+          },
+          "actions": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "supplies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FinRegistrySupply"
+            }
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FinRegistryDocument"
+            }
+          },
+          "registryFile": {
+            "$ref": "#/components/schemas/FinRegistryDocument"
+          },
+          "zipFile": {
+            "$ref": "#/components/schemas/FinRegistryDocument"
+          },
+          "totalSum": {
+            "type": "number"
+          },
+          "totalSumDebtor": {
+            "type": "number"
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "FinRegistryStatusHistory": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "PRIMARY",
+              "DANGER",
+              "SUCCESS",
+              "CANCEL",
+              "FINISH"
+            ]
+          },
+          "department": {
+            "type": "string"
+          },
+          "fio": {
+            "type": "string"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "FACTOR",
+              "DEBTOR",
+              "CLIENT"
+            ]
+          }
+        }
+      },
+      "Position": {
+        "type": "object",
+        "properties": {
+          "positionId": {
+            "type": "string"
+          },
+          "rposition": {
+            "type": "string"
+          },
+          "dposition": {
+            "type": "string"
+          }
+        }
+      },
+      "RadarProducts": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "idActivProduct": {
+            "type": "string"
+          }
+        }
+      },
+      "EventStatus": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "WARNING",
+              "DANGER"
+            ]
+          }
+        }
+      },
+      "EventMessage": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "message": {
+            "type": "string"
+          },
+          "shortMessageFilled": {
+            "type": "string"
+          },
+          "longMessageFilled": {
+            "type": "string"
+          }
+        }
+      },
+      "FactEvent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "category": {
+            "$ref": "#/components/schemas/Category"
+          },
+          "targetDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "createDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "debtorId": {
+            "type": "string"
+          },
+          "clientId": {
+            "type": "string"
+          },
+          "contractId": {
+            "type": "string"
+          },
+          "contractNum": {
+            "type": "string"
+          },
+          "eventMessage": {
+            "$ref": "#/components/schemas/EventMessage"
+          },
+          "customMessage": {
+            "type": "string"
+          },
+          "uploadFiles": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BinaryInfo"
+            }
+          },
+          "requirements": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EventRequirement"
+            }
+          },
+          "whoCreator": {
+            "type": "string"
+          },
+          "whoChanged": {
+            "type": "string"
+          },
+          "invoiceCode": {
+            "type": "string"
+          },
+          "processId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "FactEventDay": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "event": {
+            "$ref": "#/components/schemas/FactEvent"
+          },
+          "status": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "priority": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "DebtorItem": {
+        "type": "object",
+        "properties": {
+          "debtor": {
+            "type": "string"
+          },
+          "debtorId": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "productName": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "number"
+          },
+          "availableLimit": {
+            "type": "number"
+          },
+          "limitUsed": {
+            "type": "number"
+          },
+          "gracePeriod": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "financingPercent": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "contractNum": {
+            "type": "string"
+          },
+          "contractFactNum": {
+            "type": "string"
+          },
+          "regress": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ClientModelEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "haveFinancingLimit": {
+            "type": "number"
+          },
+          "productId": {
+            "type": "string"
+          },
+          "contract": {
+            "$ref": "#/components/schemas/ContractEntity"
+          },
+          "clientId": {
+            "type": "string"
+          },
+          "clientContract": {
+            "$ref": "#/components/schemas/ContractorEntity"
+          },
+          "regress": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ContactPersonEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "fio": {
+            "type": "string"
+          },
+          "position": {
+            "$ref": "#/components/schemas/PositionEntity"
+          },
+          "workPhone": {
+            "type": "string"
+          },
+          "mobilPhone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "rfio": {
+            "type": "string"
+          },
+          "dfio": {
+            "type": "string"
+          }
+        }
+      },
+      "ContractEntity": {
+        "type": "object",
+        "properties": {
+          "contractId": {
+            "type": "string"
+          },
+          "generalContractId": {
+            "type": "string"
+          },
+          "contractTypeId": {
+            "type": "string"
+          },
+          "contractNum": {
+            "type": "string"
+          },
+          "contractDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "contractStatusId": {
+            "type": "string"
+          },
+          "contractorFirst": {
+            "$ref": "#/components/schemas/ContractorEntity"
+          },
+          "contractorSecond": {
+            "$ref": "#/components/schemas/ContractorEntity"
+          }
+        }
+      },
+      "ContractorEntity": {
+        "type": "object",
+        "properties": {
+          "contractorId": {
+            "type": "string"
+          },
+          "shortName": {
+            "type": "string"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "inn": {
+            "type": "string"
+          },
+          "kpp": {
+            "type": "string"
+          },
+          "egrnNum": {
+            "type": "string"
+          },
+          "legalAddress": {
+            "type": "string"
+          },
+          "actualAddress": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "orgFormId": {
+            "type": "string"
+          },
+          "isClient": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "isDebtor": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "contractorStateId": {
+            "type": "string"
+          },
+          "debtorStateId": {
+            "type": "string"
+          },
+          "leader": {
+            "$ref": "#/components/schemas/ContactPersonEntity"
+          },
+          "formShortName": {
+            "type": "string"
+          }
+        }
+      },
+      "PositionEntity": {
+        "type": "object",
+        "properties": {
+          "positionId": {
+            "type": "string"
+          },
+          "rposition": {
+            "type": "string"
+          },
+          "dposition": {
+            "type": "string"
+          }
+        }
+      },
+      "RewardDebtor": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sum": {
+            "type": "number"
+          },
+          "periodFrom": {
+            "type": "string",
+            "format": "date"
+          },
+          "periodTo": {
+            "type": "string",
+            "format": "date"
+          },
+          "statusDebtor": {
+            "type": "string"
+          },
+          "statusFactor": {
+            "type": "string"
+          },
+          "createDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "debtorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "department": {
+            "type": "string"
+          },
+          "processId": {
+            "type": "string"
+          },
+          "debtorStatusHistories": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RewardDebtorStatusHistory"
+            }
+          },
+          "debtor": {
+            "$ref": "#/components/schemas/Debtor"
+          }
+        }
+      },
+      "RewardDebtorStatusHistory": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "PRIMARY",
+              "DANGER",
+              "SUCCESS",
+              "CANCEL",
+              "FINISH"
+            ]
+          },
+          "department": {
+            "type": "string"
+          },
+          "fio": {
+            "type": "string"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "FACTOR",
+              "DEBTOR"
+            ]
+          }
+        }
+      },
+      "RewardDebtorDetail": {
+        "type": "object",
+        "properties": {
+          "reward": {
+            "$ref": "#/components/schemas/RewardDebtor"
+          },
+          "actions": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "statuses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RewardDebtorStatusHistory"
+            }
+          },
+          "reportData": {
+            "$ref": "#/components/schemas/RewardSupplyResponse"
+          },
+          "act": {
+            "$ref": "#/components/schemas/RewardDebtorDocument"
+          },
+          "report": {
+            "$ref": "#/components/schemas/RewardDebtorDocument"
+          }
+        }
+      },
+      "RewardDebtorDocument": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "document": {
+            "$ref": "#/components/schemas/BinaryInfo"
+          },
+          "externalId": {
+            "type": "string"
+          },
+          "rewardId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "DIADOC",
+              "FILE_SYSTEM",
+              "GENERATED"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "ACT",
+              "REPORT"
+            ]
+          },
+          "signature": {
+            "$ref": "#/components/schemas/DiadocSignature"
+          },
+          "creator": {
+            "type": "string",
+            "enum": [
+              "FACTOR",
+              "SYSTEM",
+              "DEBTOR"
+            ]
+          }
+        }
+      },
+      "RewardDebtorSupply": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PROCESS",
+              "CHECKING",
+              "COMPLETED"
+            ]
+          },
+          "rewardId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "contractFactId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "invoiceAmount": {
+            "type": "number"
+          },
+          "finDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "delayDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "redeemDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "payAmount": {
+            "type": "number"
+          },
+          "finAmount": {
+            "type": "number"
+          },
+          "financingPeriod": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "rewardAmount": {
+            "type": "number"
+          },
+          "rewardAmountVat": {
+            "type": "number"
+          },
+          "comm1": {
+            "type": "number"
+          },
+          "comm2": {
+            "type": "number"
+          },
+          "comm3": {
+            "type": "number"
+          },
+          "nds": {
+            "type": "number"
+          },
+          "rate": {
+            "type": "number",
+            "format": "double"
+          },
+          "vatAmount": {
+            "type": "number"
+          },
+          "invoiceCode": {
+            "type": "string"
+          },
+          "invoiceDate": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "RewardSupplyResponse": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RewardDebtorSupply"
+            }
+          },
+          "total": {
+            "$ref": "#/components/schemas/RewardTotal"
+          }
+        }
+      },
+      "RewardTotal": {
+        "type": "object",
+        "properties": {
+          "rewardAmount": {
+            "type": "number"
+          },
+          "rewardAmountVat": {
+            "type": "number"
+          }
+        }
+      },
+      "FinRegistryDebtorNotification": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "processId": {
+            "type": "string"
+          },
+          "finRegistryId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "debtorId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "binaryInfoId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "CREATE",
+              "REFUSE",
+              "ACCEPT"
+            ]
+          },
+          "finRegistry": {
+            "$ref": "#/components/schemas/FinRegistry"
+          },
+          "debtor": {
+            "$ref": "#/components/schemas/Debtor"
+          },
+          "binaryInfo": {
+            "$ref": "#/components/schemas/BinaryInfo"
+          }
+        }
+      },
+      "I18NStrings": {
+        "type": "object",
+        "properties": {
+          "empty": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
